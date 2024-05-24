@@ -2,7 +2,7 @@ module.exports = [
     {
         id: 1,
         username: 'Admin',
-        password: 'agoodpassword',
+        password: 'agoodpassword'
     },
     {
         id: 2,

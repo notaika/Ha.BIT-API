@@ -5,7 +5,7 @@ module.exports = [
         image: '/public/images/long-sword.png',
         description: 'A rusty iron sword. Normal attack speed',
         price: 20,
-        attack: 3,
+        attack: 3
     },
     {
         id: 2,
@@ -13,14 +13,14 @@ module.exports = [
         image: '/public/images/double-handed-sword.png',
         description: 'A dull iron double-handed sword. Slow attack speed.',
         price: 20,
-        attack: 5,
+        attack: 5
     },
     {
         id: 3,
         name: 'Dagger',
-        image: 'public/images/dagger.png',
+        image: '/public/images/dagger.png',
         description: 'Is this a fruit knife? Fast attack speed.',
         price: 20,
-        attack: 1,
+        attack: 1
     },
 ]

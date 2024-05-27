@@ -1,7 +1,7 @@
 module.exports = [
     {
         id: 1,
-        username: 'Admin',
+        username: 'Traveler',
         password: 'agoodpassword'
     },
     {

@@ -5,7 +5,7 @@ const getUsers = async (_req, res) => {
         const data = await knex('user');
         res.status(200).json(data);
     } catch (error) {
-        res.status(400).send(`ERROR: Could not retrieve users`, error);
+        res.status(400).send(`ERROR: Could not retrieve users`);
     }
 }
 
@@ -27,7 +27,7 @@ const getUser = async (req, res) => {
             res.status(200).json(data);
         }
     } catch (error) {
-        res.status(500).send(`ERROR: Could not retrieve user`, error);
+        res.status(500).send(`ERROR: Could not retrieve user`);
     }
 }
 

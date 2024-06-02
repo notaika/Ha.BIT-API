@@ -5,7 +5,7 @@ const getLevels = async (req, res) => {
         const data = await knex('levels');
         res.status(200).json(data);
     } catch (error) {
-        res.status(400).send(`ERROR: Could not fetch levels`, error);
+        res.status(400).send(`ERROR: Could not fetch levels`);
     }
 }
 

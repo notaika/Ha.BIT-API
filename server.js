@@ -15,6 +15,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(`public`));
 
+// need to signup and login
+// signup -- add user to db
+
+// login -- get token
+
+
+
+
+///
+/// we'll authenticate for all these routes.... ie we are supplying the token
+
 app.use('/api/users', userRoutes);
 app.use('/api/levels', levelRoutes);
 app.use('/api/sprites', spriteRoutes);

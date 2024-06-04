@@ -10,27 +10,27 @@ const getSprites = async (_req, res) => {
     }
 }
 
-const getSprite = async (req, res) => {
-    const { id } = req.params;
+const editCost = async (req, res) => {
+    const { id } = req.body; 
     try {
-        const data = await knex.select(
-            "id",
-            "idle"
-        )
-        .from('sprites')
-        .where('id', id).first();
+        const spritesData = JSON.parse(fs.readFileSync('./data/sprites.json'));
+        
+        const spriteList = spritesData.player_sprites
+        const spriteIndex = spriteList.findIndex(sprite => sprite.id === id);
 
-        if (!data) {
-            res.sendStatus(404);
+        if (spriteIndex !== -1) {
+            spriteList[spriteIndex].cost = 0;
+            fs.writeFileSync('./data/sprites.json', JSON.stringify(spritesData, null, 2));
+            res.status(200).json(spriteList[spriteIndex]);
         } else {
-            res.status(200).json(data)
+            res.status(404).send('Sprite not found');
         }
     } catch (error) {
-        res.status(500).send(`ERROR: Could not retrieve sprite`);
+        res.status(400).send(`ERROR: Unable to update cost: ${error}`);
     }
 }
 
 module.exports = {
     getSprites,
-    getSprite
+    editCost
 }

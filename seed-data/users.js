@@ -4,13 +4,15 @@ module.exports = [
         username: 'Traveler',
         password: 'agoodpassword',
         reputation: 30,
-        sprites_id: 1
+        sprites_id: 1,
+        coins: 0
     },
     {
         id: 2,
         username: 'Test User',
         password: 'testpassword',
         reputation: 0,
-        sprites_id: 1
+        sprites_id: 1,
+        coins: 0
     },
 ]

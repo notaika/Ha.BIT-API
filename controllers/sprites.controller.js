@@ -1,11 +1,12 @@
 const knex = require("knex")(require("../knexfile"));
+const fs = require('fs');
 
 const getSprites = async (_req, res) => {
     try {
-        const data = await knex('sprites');
-        res.status(200).json(data);
+        const spritesData = JSON.parse(fs.readFileSync('./data/sprites.json'))
+        res.status(200).json(spritesData);
     } catch (error) {
-        res.status(400).send(`ERROR: Unable to get sprites`)
+        res.status(400).send(`ERROR: Unable to get sprites: ${error}`)
     }
 }
 
@@ -14,8 +15,7 @@ const getSprite = async (req, res) => {
     try {
         const data = await knex.select(
             "id",
-            "idle",
-            "active"
+            "idle"
         )
         .from('sprites')
         .where('id', id).first();

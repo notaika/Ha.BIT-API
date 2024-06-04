@@ -1,0 +1,37 @@
+  {
+        "id": 1,
+        "player_sprites": [
+            {
+                "id": 1,
+                "name": "Soldier",
+                "spritesheet": "http://localhost:8080/images/player/Soldier.png"
+            },
+            {
+                "id": 2,
+                "name": "Archer",
+                "spritesheet": "http://localhost:8080/images/player/Archer.png"
+            },
+            {
+                "id": 3,
+                "name": "Wizard",
+                "spritesheet": "http://localhost:8080/images/player/Wizard.png"
+            }
+        ],
+        "monster_sprites": [
+            {
+                "id": 1,
+                "name": "Slime",
+                "spritesheet": "http://localhost:8080/images/monster/Slime.png"
+            },
+            {
+                "id": 2,
+                "name": "Orc",
+                "spritesheet": "http://localhost:8080/images/monster/Orc.png"
+            },
+            {
+                "id": 3,
+                "name": "Skeleton",
+                "spritesheet": "http://localhost:8080/images/monster/Skeleton.png"
+            }
+        ]
+    }

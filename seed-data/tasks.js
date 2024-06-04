@@ -9,7 +9,7 @@ module.exports = [
         id: 2, 
         user_id: 1,
         task: 'Buy Christmas gifts',
-        isCompleted: true
+        isCompleted: false
     },
     {
         id: 3,

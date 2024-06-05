@@ -5,8 +5,7 @@ const userRoutes = require('./routes/users');
 const levelRoutes = require('./routes/levels')
 const spriteRoutes = require('./routes/sprites')
 const taskRoutes = require('./routes/tasks');
-// const shopRoutes = require('./routes/shop');
-// const inventoryRoutes = require('./routes/inventory');
+const habitRoutes = require('./routes/habits')
 
 const { PORT } = process.env;
 const app = express();
@@ -30,8 +29,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/levels', levelRoutes);
 app.use('/api/sprites', spriteRoutes);
 app.use('/api/tasks', taskRoutes);
-// app.use('/api/shop', shopRoutes);
-// app.use('/api/inventory', inventoryRoutes);
+app.use('/api/habits', habitRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is listening on PORT:${PORT}`);

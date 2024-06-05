@@ -1,5 +1,68 @@
 const knex = require("knex")(require("../knexfile"));
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
+
+// User creation, login and authentication
+const userSignup = async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const existingUser = await knex('user').where({ username }).first();
+
+        if (existingUser) {
+            return res.status(400).send(`ERROR: A user with that username already exists`)
+        }
+
+        const encrypted = bcrypt.hashSync(password);
+
+        await knex('user').insert({ username, password: encrypted });
+        res.status(201).json({ success:true });
+    } catch (error) {
+        res.status(500).send(`ERROR: Unable to sign-up with these credentials ${error}`);
+    }
+}
+
+const userLogin = async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await knex('user').where({ username }).first();
+
+        if (!user) {
+            return res.status(400).send("Username or password is incorrect");
+        }
+        if (!bcrypt.compareSync(password, user.password)) {
+            return res.status(400).send("Username or password is incorrect");
+        }
+
+        const token = jwt.sign({ username: user.username }, process.env.SECRET);
+
+        res.json({ token })
+    } catch (error) {
+        res.status(401).send("Login failed");
+    }
+}
+
+const getProfile = async (req, res) => {
+    res.json(req.user);
+}
+
+const authorize = async (req, res, next) => {
+    const { authorization } = req.headers;
+
+    const token = authorization.split(" ")[1];
+
+    try {
+        const { username } = jwt.verify(token, process.env.SECRET);
+        const user = await knex("user").select("id", "username", "reputation", "coins", "created_at").where({ username }).first();
+        req.user = user;
+        next();
+    } catch (error) {
+        res.status(400).json({ Error: error });
+      }
+}
+
+// API Calls
 const getUsers = async (_req, res) => {
     try {
         const data = await knex('user');
@@ -117,5 +180,9 @@ module.exports = {
     getUser,
     addCoins,
     addReputation,
-    subtractCoins
+    subtractCoins,
+    userSignup,
+    userLogin,
+    getProfile,
+    authorize
 };

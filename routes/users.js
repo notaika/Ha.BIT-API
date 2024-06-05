@@ -5,6 +5,15 @@ const usersController = require('../controllers/users-controller');
 router.route('/')
     .get(usersController.getUsers)
 
+router.route('/signup')
+    .post(usersController.userSignup)
+
+router.route('/login')
+    .post(usersController.userLogin)
+
+router.route('/profile')
+    .get(usersController.authorize, usersController.getProfile)
+
 router.route('/:id')
     .get(usersController.getUser)
     

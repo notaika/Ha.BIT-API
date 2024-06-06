@@ -35,7 +35,7 @@ const userLogin = async (req, res) => {
             return res.status(400).send("Username or password is incorrect");
         }
 
-        const token = jwt.sign({ username: user.username }, process.env.SECRET);
+        const token = jwt.sign({ id: user.id, username: user.username }, process.env.SECRET);
 
         res.json({ token })
     } catch (error) {
@@ -50,17 +50,35 @@ const getProfile = async (req, res) => {
 const authorize = async (req, res, next) => {
     const { authorization } = req.headers;
 
+    if (!authorization) {
+        console.error("Authorization header is missing");
+        return res.status(401).json({ error: "Authorization header is missing" });
+    }
+
     const token = authorization.split(" ")[1];
 
+    if (!token) {
+        console.error("Token is missing");
+        return res.status(401).json({ error: "Token is missing" });
+    }
+
     try {
-        const { username } = jwt.verify(token, process.env.SECRET);
-        const user = await knex("user").select("id", "username", "reputation", "coins", "created_at").where({ username }).first();
+        const { id } = jwt.verify(token, process.env.SECRET);
+        const user = await knex("user").select("id", "username", "reputation", "created_at", "coins").where({ id }).first();
+
+        if (!user) {
+            console.error("User not found");
+            return res.status(401).json({ error: "User not found" });
+        }
+
         req.user = user;
         next();
     } catch (error) {
-        res.status(400).json({ Error: error });
-      }
-}
+        console.error("Invalid token", error);
+        res.status(400).json({ error: "Invalid token" });
+    }
+};
+
 
 // API Calls
 const getUsers = async (_req, res) => {

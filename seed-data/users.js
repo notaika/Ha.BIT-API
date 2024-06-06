@@ -4,7 +4,6 @@ module.exports = [
         username: 'Traveler',
         password: 'agoodpassword',
         reputation: 30,
-        sprites_id: 1,
         coins: 0
     },
     {
@@ -12,7 +11,6 @@ module.exports = [
         username: 'Test User',
         password: 'testpassword',
         reputation: 0,
-        sprites_id: 1,
         coins: 0
     },
 ]

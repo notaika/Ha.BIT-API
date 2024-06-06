@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Soldier",
+        "spritesheet": "http://localhost:8080/images/player/Soldier.png",
+        "shop": "http://localhost:8080/images/shop/Soldier-Idle.png",
+        "cost": 0
+      },
+      {
+        "id": 2,
+        "name": "Archer",
+        "spritesheet": "http://localhost:8080/images/player/Archer.png",
+        "shop": "http://localhost:8080/images/shop/Archer-Idle.png",
+        "cost": 100
+      },
+      {
+        "id": 3,
+        "name": "Wizard",
+        "spritesheet": "http://localhost:8080/images/player/Wizard.png",
+        "shop": "http://localhost:8080/images/shop/Wizard-Idle.png",
+        "cost": 250
+      }
+]

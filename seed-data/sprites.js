@@ -1,11 +1,27 @@
 module.exports = [
     {
         id: 1,
-        idle: 'http://localhost:8080/images/avatar-idle.gif',
-        active: 'http://localhost:8080/images/avatar-active.gif'
+        user_id: 1,
+        sprite_id: 1,
+        isOwned: true
+
     }, {
         id: 2,
-        idle: 'http://localhost:8080/images/monster-idle.gif',
-        active: 'http://localhost:8080/images/monster-active.gif'
+        user_id: 1,
+        sprite_id: 2,
+        isOwned: false
+
+    }, {
+        id: 3,
+        user_id: 2,
+        sprite_id: 1,
+        isOwned: true
+
+    }, {
+        id: 4,
+        user_id: 2,
+        sprite_id: 3,
+        isOwned: false
+
     },
 ]

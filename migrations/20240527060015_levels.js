@@ -8,6 +8,8 @@ exports.up = function(knex) {
     table.integer('level').notNullable();
     table.string('name', 255).notNullable();
     table.integer('time').notNullable();
+    table.integer('coins').defaultTo(0);
+    table.string('spritesheet', 255).notNullable();
   })
 };
 

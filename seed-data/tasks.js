@@ -8,12 +8,12 @@ module.exports = [
     {
         id: 2, 
         user_id: 1,
-        task: 'Buy Christmas gifts',
+        task: 'Pick up meds from the vet for Lano',
         isCompleted: false
     },
     {
         id: 3,
-        user_id: 2,
+        user_id: 1,
         task: 'Edit bug in code',
         isCompleted: false
     },

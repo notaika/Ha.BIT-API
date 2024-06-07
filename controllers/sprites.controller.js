@@ -44,19 +44,16 @@ const getUserSprites = async (req, res) => {
         const user = await knex('user').where('id', userId).first();
 
         if (!sprite || !user) {
-            console.error(`ERROR: Sprite or user not found`);
             return res.status(400).send(`ERROR: Sprite or user not found`);
         }
 
         if (user.coins < sprite.cost) {
-            console.error(`ERROR: Not enough coins`);
             return res.status(400).send(`ERROR: Not enough coins`);
         }
 
         const userSprite = await knex('user_sprites').where({ user_id: userId, sprite_id }).first();
 
         if (userSprite) {
-            console.error(`ERROR: Sprite already owned`);
             return res.status(400).send(`ERROR: Sprite already owned`);
         }
 
@@ -66,7 +63,6 @@ const getUserSprites = async (req, res) => {
 
         res.status(200).json({ newBalance });
     } catch (error) {
-        console.error(`ERROR: Could not purchase sprite`, error);
         res.status(500).send(`ERROR: Could not purchase sprite`);
     }
 };

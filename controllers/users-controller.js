@@ -141,32 +141,6 @@ const addCoins = async (req, res) => {
     }
 }
 
-// const subtractCoins = async (req, res) => {
-//     const {id, minusCoins } = req.body;
-
-//     if (!id || minusCoins === undefined) {
-//         return res.status(400).send(`ERROR: User ID and added coins are required`);
-//     }
-
-//     if (isNaN(minusCoins)) {
-//         return res.status(400).send(`ERROR: addedCoins must be a number`);
-//     }
-
-//     const user = await knex('user').where('id', id).first();
-//         if (!user) {
-//             return res.status(400).send(`ERROR: User ID and subtracted coins are required`)
-//         }
-
-//     try {
-//         const newBalance = user.coins - minusCoins;
-//         await knex('user').where('id', id).update({ coins: newBalance })
-
-//         res.status(200).json({ coins: newBalance })
-//     } catch (error) {
-//         res.status(500).send(`ERROR: Could not update inventory item: ${error}`)
-//     }
-// }
-
 const addReputation = async (req, res) => {
     const { id, addedReputation } = req.body;
 

@@ -172,7 +172,6 @@ module.exports = {
     getUser,
     addCoins,
     addReputation,
-    // subtractCoins,
     userSignup,
     userLogin,
     getProfile,

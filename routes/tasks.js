@@ -10,5 +10,6 @@ router.route('/')
 router.route('/:id')
     .get(tasksController.getTask)
     .delete(tasksController.deleteTask)
+    .patch(userController.authorize, tasksController.completeTask)
 
 module.exports = router;

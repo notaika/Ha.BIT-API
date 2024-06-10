@@ -52,9 +52,26 @@ const deleteTask = async (req, res) => {
     }
 };
 
+const completeTask = async (req, res) => {
+    const { id } = req.params;
+    const { isCompleted } = req.body;
+    try {
+        const data = await knex('tasks').where({id, user_id: req.user.id})
+        .update({ isCompleted })
+
+        if (!data) {
+            return res.status(404).send(`ERROR: Task not found`);
+        }
+        res.status(200).send(`SUCCESS: Task updated successfully`);
+    } catch (error) {
+        res.status(500).send(`ERROR: Could not update task`);
+    }
+};
+
 module.exports = {
     getTasks,
     addTask,
     deleteTask,
     getTask,
+    completeTask
 }

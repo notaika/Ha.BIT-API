@@ -20,8 +20,8 @@ router.route('/:id')
 router.route('/:id/coins/add')
     .patch(usersController.addCoins)
 
-router.route('/:id/coins/subtract')
-    .patch(usersController.subtractCoins)
+// router.route('/:id/coins/subtract')
+//     .patch(usersController.subtractCoins)
 
 router.route('/:id/reputation')
     .patch(usersController.addReputation)

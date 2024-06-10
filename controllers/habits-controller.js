@@ -66,7 +66,6 @@ const postCompleted = async (req, res) => {
 }
 
 const getHabitCompletionLogs = async (req, res) => {
-    const today = new Date().toISOString().split('T')[0];
     
     try {
         const habitCompletedLogs = await knex('habits_completed')
